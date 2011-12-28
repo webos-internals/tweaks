@@ -1,0 +1,12 @@
+{
+  "id": "org.webosinternals.tweaks",
+  "package_format_version": 2,
+  "loc_name": "Tweaks",
+  "version": "1.8.5",
+  "icon": "icon.png",
+  "miniicon": "icon.png",
+  "vendor": "WebOS Internals",
+  "vendorurl": "www.webos-internals.org",
+  "app": "org.webosinternals.tweaks",
+  "services": ["org.webosinternals.tweaks.prefs"]
+}

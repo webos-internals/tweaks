@@ -1,0 +1,51 @@
+#!/bin/sh
+
+SID="org.webosinternals.tweaks.prefs"
+
+APPS="/media/cryptofs/apps"
+
+SDIR="${APPS}/usr/palm/services/${SID}"
+
+# Handle execution as pmPostInstall.script
+
+if [ ! -d ${APPS} ]; then
+	echo "Requires webOS 1.3.5 or later"
+	exit 1
+fi
+
+if [ -z "${IPKG_OFFLINE_ROOT}" ]; then
+  IPKG_OFFLINE_ROOT=/media/cryptofs/apps
+  mount -o remount,rw /
+fi
+
+# Remove the ls2 roles configuration
+
+rm -f /var/palm/ls2/roles/prv/${SID}.json
+rm -f /var/palm/ls2/roles/pub/${SID}.json
+
+# Remove the dbus service configuration
+
+rm -f /var/palm/ls2/services/prv/${SID}.service
+rm -f /var/palm/ls2/services/pub/${SID}.service
+
+# Install the ls2 roles configuration
+
+mkdir -p /var/palm/ls2/roles/prv /var/palm/ls2/roles/pub
+
+cp ${SDIR}/${SID}.json /var/palm/ls2/roles/prv/${SID}.json
+cp ${SDIR}/${SID}.json /var/palm/ls2/roles/pub/${SID}.json
+
+# Install the dbus service configuration
+
+mkdir -p /var/palm/ls2/services/prv /var/palm/ls2/services/pub
+
+cp ${SDIR}/${SID}.service /var/palm/ls2/services/prv/${SID}.service
+cp ${SDIR}/${SID}.service /var/palm/ls2/services/pub/${SID}.service
+
+# Stop the JS service if running
+
+/usr/bin/luna-send -n 1 palm://${SID}/__quit '{}'
+
+/usr/bin/ls-control scan-services || true
+
+exit 0

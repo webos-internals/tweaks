@@ -1,0 +1,33 @@
+{
+	"description": "Background Tweaks Service",
+	"id": "org.webosinternals.tweaks.prefs",
+	"engine": "node",
+	"activityTimeout": 30,
+	"commandTimeout": 30,
+	"services": [ {
+		"name": "org.webosinternals.tweaks.prefs",
+		"description": "Background service for Tweaks App",
+		"commands": [ 
+			{ 
+				"name": "list", 
+				"assistant": "ListCommandAssistant",
+				"public": true
+			},
+			{ 
+				"name": "scan", 
+				"assistant": "ScanCommandAssistant",
+				"public": true
+			},
+			{ 
+				"name": "get", 
+				"assistant": "GetCommandAssistant",
+				"public": true
+			},
+			{ 
+				"name": "set", 
+				"assistant": "SetCommandAssistant",
+				"public": true
+			}
+		] 
+	}]
+}

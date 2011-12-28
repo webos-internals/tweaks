@@ -1,0 +1,13 @@
+[
+	{	"library": { "name": "foundations", "version": "1.0" } },
+
+	{	"source": "assistants/get-assistant.js" },
+	{	"source": "assistants/set-assistant.js" },
+
+	{	"source": "assistants/list-assistant.js" },
+
+	{	"source": "assistants/scan-assistant.js" },
+
+	{	"source": "assistants/utils-prefs.js" },
+	{	"source": "assistants/utils-toolbox.js" }
+]

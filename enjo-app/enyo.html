@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tweaks</title>
+
+		<meta name="viewport" content="height=device-height" />
+	
+		<script src="/usr/palm/frameworks/enyo/1.0/framework/enyo.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			enyo.windows.activate("tweaks.html", "main", {});
+
+			enyo.application = {
+				applicationRelaunchHandler: function(params) {
+					enyo.windows.activate("tweaks.html", "main", {});
+				}
+			};
+		</script>
+	</body>
+</html>

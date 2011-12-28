@@ -1,0 +1,79 @@
+[
+  {
+    "category": "system",
+    "owner": "com.mydomain.test-owner-id",
+    "prefs": [ {
+      "group": "behavior",
+      "restart": "app",
+      "label": "Label for this item",
+      "help": "Help text for this item",
+      "key": "someUniqueKey",
+      "type": "IntegerPicker",
+      "value": 50,
+      "min": 0,
+      "max": 100
+    }, {
+      "group": "behavior",
+      "restart": "luna",
+      "label": "Label for this item",
+      "help": "Help text for this item",
+      "key": "someOtherUniqueKey",  
+      "type": "ListSelector",
+      "value": "default",
+      "choices": [ {
+        "label": "Test label 1",
+        "value": "default"
+      }, {
+        "label": "Test label 2",
+        "value": "other"
+      } ]
+    } ]
+  }, {
+    "category": "messaging",
+    "owner": "com.mydomain.test-owner-id",
+    "prefs": [ {
+      "group": "misc",
+      "restart": "none",
+      "label": "Label for the text item",
+      "help": "Help text for this item",
+      "key": "someYetAnotherUniqueKey",
+      "type": "TextField",
+      "value": "Initial value text"
+    }, {
+      "group": "misc",
+      "restart": "none",
+      "label": "Label for the numeric item",
+      "help": "Help text for this item",
+      "key": "againYetAnotherUniqueKey",
+      "type": "TextField",
+      "value": "",
+      "input": "numeric"
+    }, {
+      "group": "misc",
+      "restart": "none",
+      "label": "Label for this item",
+      "help": "Help text for this item",
+      "key": "stillYetAnotherUniqueKey",
+      "type": "ToggleButton",
+      "value": false,
+      "input": "text"
+    } ]
+  }, {
+    "category": "misc",
+    "owner": "com.mydomain.test-owner-id",
+    "prefs": [ {
+      "group": "fonts",
+      "restart": "none",
+      "label": "Label for the picker dialog",
+      "help": "Help text for this item",
+      "key": "naturallyYetAnotherUniqueKey",
+      "type": "FilePicker",
+      "path": "/media/internal/downloads",
+      "filter": "files",
+      "select": "single",
+      "value": [
+        "/media/internal/downloads/test.txt"
+      ]
+    } ]
+  }
+]
