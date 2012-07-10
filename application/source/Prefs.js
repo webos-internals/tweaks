@@ -7,6 +7,7 @@ enyo.kind({
 	_groups: [],
 	
 	_categories: [
+		{category: "luna", count: 0},
 		{category: "accounts", count: 0},
 		{category: "backup", count: 0},
 		{category: "bluetooth", count: 0},
@@ -16,7 +17,6 @@ enyo.kind({
 		{category: "help", count: 0},
 		{category: "just type", count: 0},
 		{category: "location services", count: 0},
-		{category: "luna", count: 0},
 		{category: "print manager", count: 0},			
 		{category: "regional settings", count: 0},			
 		{category: "screen & lock", count: 0},			
@@ -103,6 +103,8 @@ enyo.kind({
 			
 			switch(this._categories[inIndex].category)
 			{
+				case "luna": filename = "luna";
+					break;
 				case "accounts": filename = "accounts";
 					break;
 				case "backup": filename = "backup";
@@ -120,8 +122,6 @@ enyo.kind({
 				case "just type": filename = "search";
 					break;
 				case "location services": filename = "location";
-					break;
-				case "luna": filename = "luna";
 					break;
 				case "print manager": filename = "print";
 					break;
