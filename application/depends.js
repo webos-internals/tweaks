@@ -3,6 +3,7 @@ enyo.depends(
 	"css/Wosi.css",	
 	"source/Tweaks.js",
 	"source/Main.js",
+	"source/Prefs.js",
 	"source/Config.js",
 	"source/Help.js",
 	"source/Wosi.js",

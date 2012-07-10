@@ -36,7 +36,14 @@ enyo.kind({
 						]}
 					]}, 
 					{name: "clsMain", kind: "Main", className: "enyo-bg", onSelect: "handleCategorySelect"}, 
+					{name: "clsPrefs", kind: "Prefs", className: "enyo-bg"}, 
 					{name: "clsStartup", kind: "Startup", className: "enyo-bg", onDone: "startupDone"}
+				]},
+				{kind: "PageHeader", components:[
+					{kind: "RadioGroup", style: "width: 100%;", onChange: "radioButtonSelected", components:[
+						{kind: "RadioButton", content: "Tweaks"},
+						{kind: "RadioButton", content: "Preferences"},
+					]}
 				]}
 			]}, 
 			{name: "middle", fixedWidth: true, peekWidth: 64, width: "704px", dragAnywhere: false, className: "blank-slider", components: [
@@ -117,6 +124,11 @@ enyo.kind({
 		this.showSpinner();
 
 		this.$.srvScanTweaks.call({});
+	},
+	
+	radioButtonSelected: function(inSender) {
+		if(inSender.getValue() == 0) this.$.leftPane.selectViewByIndex(1);
+		else if(inSender.getValue() == 1) this.$.leftPane.selectViewByIndex(2);
 	},
 
 	showSpinner: function() {

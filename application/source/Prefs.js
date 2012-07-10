@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "Main",
+	name: "Prefs",
 	kind: enyo.VFlexBox,
 	flex: 1,
 	className: "basic-back",
@@ -7,15 +7,25 @@ enyo.kind({
 	_groups: [],
 	
 	_categories: [
-		{category: "browser", count: 0},
-		{category: "calendar", count: 0},
-		{category: "camera", count: 0},
-		{category: "clock", count: 0},			
-		{category: "contacts", count: 0},
-		{category: "email", count: 0},
-		{category: "messaging", count: 0},
-		{category: "phone", count: 0},
-		{category: "system", count: 0}				
+		{category: "accounts", count: 0},
+		{category: "backup", count: 0},
+		{category: "bluetooth", count: 0},
+		{category: "date & time", count: 0},			
+		{category: "device info", count: 0},
+		{category: "exhibition", count: 0},
+		{category: "help", count: 0},
+		{category: "just type", count: 0},
+		{category: "location services", count: 0},
+		{category: "luna", count: 0},
+		{category: "print manager", count: 0},			
+		{category: "regional settings", count: 0},			
+		{category: "screen & lock", count: 0},			
+		{category: "software manager", count: 0},			
+		{category: "sounds & ringtones", count: 0},			
+		{category: "system updates", count: 0},			
+		{category: "text assist", count: 0},			
+		{category: "VPN", count: 0},			
+		{category: "wi-fi", count: 0},						
 	],
 	
 	events: {
@@ -96,7 +106,8 @@ enyo.kind({
 				(this._categories[inIndex].category == "contacts") ||
 				(this._categories[inIndex].category == "email") ||
 				(this._categories[inIndex].category == "messaging") ||
-				(this._categories[inIndex].category == "phone"))
+				(this._categories[inIndex].category == "phone") ||
+				(this._categories[inIndex].category == "luna"))
 			{
 				this.$.icon.setSrc("images/icon-" + this._categories[inIndex].category + ".png");
 			}
