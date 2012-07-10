@@ -99,18 +99,52 @@ enyo.kind({
 			this.$.category.setContent(this._categories[inIndex].category);
 			this.$.count.setContent(this._categories[inIndex].count);
 			
-			if((this._categories[inIndex].category == "browser") ||
-				(this._categories[inIndex].category == "calendar") ||
-				(this._categories[inIndex].category == "camera") ||
-				(this._categories[inIndex].category == "clock") ||
-				(this._categories[inIndex].category == "contacts") ||
-				(this._categories[inIndex].category == "email") ||
-				(this._categories[inIndex].category == "messaging") ||
-				(this._categories[inIndex].category == "phone") ||
-				(this._categories[inIndex].category == "luna"))
+			var filename;
+			
+			switch(this._categories[inIndex].category)
 			{
-				this.$.icon.setSrc("images/icon-" + this._categories[inIndex].category + ".png");
+				case "accounts": filename = "accounts";
+					break;
+				case "backup": filename = "backup";
+					break;
+				case "bluetooth": filename = "bluetooth";
+					break;
+				case "date & time": filename = "datetime";
+					break;
+				case "device info": filename = "deviceinfo";
+					break;
+				case "exhibition": filename = "exhibition";
+					break;
+				case "help": filename = "help";
+					break;
+				case "just type": filename = "search";
+					break;
+				case "location services": filename = "location";
+					break;
+				case "luna": filename = "luna";
+					break;
+				case "print manager": filename = "print";
+					break;
+				case "regional settings": filename = "region";
+					break;
+				case "screen & lock": filename = "screenlock";
+					break;
+				case "software manager": filename = "software";
+					break;
+				case "sounds & ringtones": filename = "sound";
+					break;
+				case "system updates": filename = "updates";
+					break;
+				case "text assist": filename = "textassist";
+					break;
+				case "VPN": filename = "vpn";
+					break;
+				case "wi-fi": filename = "wifi";
+					break;
+				default: break;
 			}
+
+			this.$.icon.setSrc("images/icon-" + filename + ".png");
 			
 			if(this._categories[inIndex].count == 0) {
 				this.$.icon.applyStyle("opacity", 0.4);
