@@ -184,7 +184,7 @@ enyo.kind({
 		this.$.srvSaveTweaks.call({objects: [this.owner._config]});
 	},
 
-	handleHelpToggle: function(inSender, inEvent) {
+	handleHelpToggle: function(inSender, inEvent){
 		if(this._ui == "compact") {
 			if(this._helpOn) {
 				this._helpOn = false;
@@ -239,7 +239,7 @@ enyo.kind({
 			this.doSelect(inSender.name, this._help[inSender.name]);
 	},
 
-	openFilePicker: function(inSender) {
+	openFilePicker: function(inSender) {
 		for(var group in this.owner._config[this._category]) {
 			for(var i = 0; i < this.owner._config[this._category][group].length; i++) {
 				if(this.owner._config[this._category][group][i].key == inSender.name) {
