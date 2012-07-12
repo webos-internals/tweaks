@@ -38,12 +38,14 @@ enyo.kind({
 					{name: "clsMain", kind: "Main", className: "enyo-bg", onSelect: "handleCategorySelect"}, 
 					{name: "clsStartup", kind: "Startup", className: "enyo-bg", onDone: "startupDone"}
 				]},
+				/*
 				{kind: "PageHeader", components:[
 					{kind: "RadioGroup", style: "width: 100%;", onChange: "radioButtonSelected", components:[
 						{kind: "RadioButton", content: "Tweaks"},
 						{kind: "RadioButton", content: "Preferences"},
 					]}
 				]}
+				*/
 			]}, 
 			{name: "middle", fixedWidth: true, peekWidth: 64, width: "704px", dragAnywhere: false, className: "blank-slider", components: [
 				{name: "middlePane", kind: "Pane", flex: 1, components: [
