@@ -119,8 +119,8 @@ enyo.kind({
 	},
 
 	startupDone: function() {
-		this.$.leftProgress.setContent("Scanning installed tweaks...");		
-		this.$.middleProgress.setContent("Scanning installed tweaks...");		
+		this.$.leftProgress.setContent("Scanning installed tweaks...");
+		this.$.middleProgress.setContent("Scanning installed tweaks...");
 
 		this.showSpinner();
 
