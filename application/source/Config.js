@@ -73,8 +73,7 @@ enyo.kind({
 
 		{name: "srvRestartLuna", kind: "PalmService", service: "palm://org.webosinternals.ipkgservice", method: "restartLuna"},
 
-		{name: "srvSetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "setPreferences"}
-		{name: "srvGetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "getPreferences"}
+		{name: "srvSetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "setPreferences", onSuccess: "setPrefsSuccess", onFailure: "setPrefsFaliure"}
 	],
 	
 	adjustInterface: function(inSize) {
@@ -210,9 +209,18 @@ enyo.kind({
 	},
 
 	handleSetPref: function(inPref, inValue) {
-		enyo.log(inPref, inValue);
-		this.$.srvSetPref.setParams({inPref:inValue});
-		this.$.srvSetPref.call();
+		enyo.log("Setting", inPref, "to", inValue);
+		var obj = {};
+		obj[inPref] = inValue;
+		enyo.log(obj);
+		this.$.srvSetPref.call(obj);
+	},
+	
+	setPrefsSuccess : function(inSender, inResponse) {
+    	enyo.log("setPreferences success, results=" + enyo.json.stringify(inResponse));
+	},
+	setPrefsFailure : function(inSender, inResponse) {
+		enyo.log("setPreferences failure, results=" + enyo.json.stringify(inResponse));
 	},
 
 	handleLunaNotify: function(inSender, inEvent) {

@@ -13,10 +13,10 @@ enyo.kind({
 		{category: "clock", count: 0},			
 		{category: "contacts", count: 0},
 		{category: "email", count: 0},
+		{category: "luna", count: 0},
 		{category: "messaging", count: 0},
 		{category: "phone", count: 0},
-		{category: "system", count: 0},	
-		{category: "luna", count: 0},			
+		{category: "system", count: 0},			
 	],
 	
 	events: {

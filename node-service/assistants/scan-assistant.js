@@ -22,10 +22,10 @@ ScanCommandAssistant.prototype.run = function(future) {
 			clock: {},
 			contacts: {},
 			email: {},
+			luna: {},
 			messaging: {},
 			phone: {},
-			system: {},
-			luna: {}
+			system: {}
 		};
 
 		var fs = IMPORTS.require('fs');
