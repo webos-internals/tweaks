@@ -338,7 +338,11 @@ enyo.kind({
 					this.owner._config[this._category][group][i].value = this.$[inSender.name].getValue();
 		
 					if(this.owner._config[this._category][group][i].prefserv != "")
-						this.handleSetPref();
+					{
+						this.handleSetPref(
+							this.owner._config[this._category][group][i].prefserv,
+							this.$[inSender.name].getValue());
+					}
 
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
@@ -385,7 +389,11 @@ enyo.kind({
 						this.owner._config[this._category][group][i].value = this.$[inSender.name].getValue();
 		
 						if(this.owner._config[this._category][group][i].prefserv != "")
-							this.handleSetPref();
+						{
+							this.handleSetPref(
+								this.owner._config[this._category][group][i].prefserv,
+								this.$[inSender.name].getValue());
+						}
 						
 						if(this.owner._config[this._category][group][i].restart == "luna")
 							this.handleLunaNotify();
@@ -406,7 +414,11 @@ enyo.kind({
 					this.owner._config[this._category][group][i].value = this.$[inSender.name].getState();
 		
 					if(this.owner._config[this._category][group][i].prefserv != "")
-						this.handleSetPref();
+					{
+						this.handleSetPref(
+							this.owner._config[this._category][group][i].prefserv,
+							this.$[inSender.name].getValue());
+					}
 						
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();

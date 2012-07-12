@@ -6,12 +6,17 @@
       "restart": "none",
       "prefserv": "sysUiGestureDetection",
       "label": "Gesture Detection Engine",
-      "help": "Help text for this item",
-      "key": "sysUiEnableNextPrevGestures",
-      "type": "IntegerPicker",
+      "help": "Controls the conditions for firing a gesture.",
+      "key": "fluidGestures",
+      "type": "ListSelector",
       "value": 0,
-      "min": 0,
-      "max": 1
+      "choices": [ {
+        "label": "Swipe",
+        "value": 0
+      }, {
+        "label": "Drag",
+        "value": 1
+      } ]
     } ]
   }
 ]
