@@ -36,7 +36,6 @@ enyo.kind({
 						]}
 					]}, 
 					{name: "clsMain", kind: "Main", className: "enyo-bg", onSelect: "handleCategorySelect"}, 
-					{name: "clsPrefs", kind: "Prefs", className: "enyo-bg", onSelect: "handleCategorySelect"}, 
 					{name: "clsStartup", kind: "Startup", className: "enyo-bg", onDone: "startupDone"}
 				]},
 				{kind: "PageHeader", components:[

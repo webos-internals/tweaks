@@ -1,0 +1,17 @@
+[
+  {
+    "category": "luna",
+    "prefs": [ {
+      "group": "gestures",
+      "restart": "none",
+      "prefserv": "sysUiGestureDetection",
+      "label": "Gesture Detection Engine",
+      "help": "Help text for this item",
+      "key": "sysUiEnableNextPrevGestures",
+      "type": "IntegerPicker",
+      "value": 0,
+      "min": 0,
+      "max": 1
+    } ]
+  }
+]

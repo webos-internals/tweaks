@@ -9,6 +9,5 @@
 	"type": "web",
 	"main": "index.html",
 	"icon": "icon.png",
-	"noWindow": true,
 	"uiRevision": "2"
 }

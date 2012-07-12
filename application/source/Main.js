@@ -15,7 +15,8 @@ enyo.kind({
 		{category: "email", count: 0},
 		{category: "messaging", count: 0},
 		{category: "phone", count: 0},
-		{category: "system", count: 0}				
+		{category: "system", count: 0},	
+		{category: "luna", count: 0},			
 	],
 	
 	events: {
@@ -53,6 +54,9 @@ enyo.kind({
 		
 		for(var category in inTweaks) {
 			if(category.slice(0,1) == "_")
+				continue;
+				
+			if(category.preference == true)
 				continue;
 
 			var count = 0;
@@ -96,7 +100,8 @@ enyo.kind({
 				(this._categories[inIndex].category == "contacts") ||
 				(this._categories[inIndex].category == "email") ||
 				(this._categories[inIndex].category == "messaging") ||
-				(this._categories[inIndex].category == "phone"))
+				(this._categories[inIndex].category == "phone") ||
+				(this._categories[inIndex].category == "luna"))
 			{
 				this.$.icon.setSrc("images/icon-" + this._categories[inIndex].category + ".png");
 			}
