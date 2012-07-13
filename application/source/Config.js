@@ -98,7 +98,8 @@ enyo.kind({
 			this.$.tag.show();
 		}
 				
-		this.$.title.setContent("Available " + inCategory + " Tweaks");
+		this.$.title.setContent(inCategory);
+		//this.$.title.setContent("Available " + inCategory + " Tweaks");
 
 		this.$.configScroller.scrollIntoView(0);
 
