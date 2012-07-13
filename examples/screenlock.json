@@ -2,21 +2,88 @@
   {
     "category": "screen & lock",
     "prefs": [ {
-      "group": "gestures",
+      "group": "backlight",
       "restart": "none",
-      "prefserv": "sysUiGestureDetection",
-      "label": "Gesture Detection Engine",
-      "help": "Control the conditions for firing a gesture.",
-      "key": "fluidGestures",
+      "prefserv": "enableALS",
+      "label": "auto dim",
+      "help": "",
+      "key": "autodim",
+      "type": "ToggleButton",
+      "value": true
+    }, {
+      "group": "backlight",
+      "restart": "none",
+      "propserv": "maximumBrightness",
+      "label": "brightness",
+      "help": "",
+      "key": "brightness",
+      "type": "IntegerPicker",
+      "value": 50,
+      "min": 0,
+      "max": 100
+    }, {
+      "group": "backlight",
+      "restart": "none",
+      "propserv": "timeout",
+      "label": "turn off after",
+      "help": "",
+      "key": "timeout",
       "type": "ListSelector",
-      "value": 0,
+      "value": 60,
       "choices": [ {
-        "label": "Swipe",
-        "value": 0
+        "label": "1 Minute",
+        "value": 60
       }, {
-        "label": "Drag",
-        "value": 1
-      } ]
-    } ]
+        "label": "2 Minutes",
+        "value": 120
+      }, {
+        "label": "5 Minutes",
+        "value": 300
+      }, {
+        "label": "10 Minutes",
+        "value": 600
+      }, ]
+    }, {
+      "group": "wallpaper",
+      "restart": "none",
+      "prefserv": "wallpaper",
+      "label": "wallpaper",
+      "help": "",
+      "key": "wallpaper",
+      "type": "FilePicker",
+      "path": "/media/internal/wallpapers",
+      "filter": "images",
+      "select": "single",
+      "value": [
+        "/media/internal/wallpapers/01.jpg"
+        ]
+    }, {
+      "group": "advanced gestures",
+      "restart": "none",
+      "prefserv": "sysUiEnableNextPrevGestures",
+      "label": "enable gestures",
+      "help": "",
+      "key": "gestures",
+      "type": "ToggleButton",
+      "value": true
+    }, {
+      "group": "notifications",
+      "restart": "none",
+      "prefserv": "showAlertsWhenLocked",
+      "label": "show when locked",
+      "help": "",
+      "key": "lockedAlerts",
+      "type": "ToggleButton",
+      "value": true
+    }, {
+      "group": "notifications",
+      "restart": "none",
+      "prefserv": "BlinkNotifications",
+      "label": "blink notifications",
+      "help": "",
+      "key": "blinkAlerts",
+      "type": "ToggleButton",
+      "value": true
+    },]
   }
 ]
