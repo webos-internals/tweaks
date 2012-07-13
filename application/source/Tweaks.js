@@ -58,7 +58,7 @@ enyo.kind({
 			onSuccess: "handleLoadFinished", onFailure: "handleServiceError"}, 
 
 		{name: "srvScanTweaks", kind: "PalmService", service: "palm://org.webosinternals.tweaks.prefs/", method: "scan", 
-			onSuccess: "handleScanFinished", onFailure: "handleServiceError"}
+			onSuccess: "handleScanFinished", onFailure: "handleServiceError"},
 	],
 	
 	rendered: function() {

@@ -55,9 +55,6 @@ enyo.kind({
 		for(var category in inTweaks) {
 			if(category.slice(0,1) == "_")
 				continue;
-				
-			if(category.preference == true)
-				continue;
 
 			var count = 0;
 
