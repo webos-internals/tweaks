@@ -73,7 +73,7 @@ enyo.kind({
 
 		{name: "srvRestartLuna", kind: "PalmService", service: "palm://org.webosinternals.ipkgservice", method: "restartLuna"},
 
-		{name: "srvSetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "setPreferences", onSuccess: "setPrefsSuccess", onFailure: "setPrefsFaliure"}
+		{name: "srvSetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "setPreferences"},
 	],
 	
 	adjustInterface: function(inSize) {
@@ -97,9 +97,8 @@ enyo.kind({
 
 			this.$.tag.show();
 		}
-				
-		this.$.title.setContent(inCategory);
-		//this.$.title.setContent("Available " + inCategory + " Tweaks");
+
+		this.$.title.setContent("Available " + inCategory + " Tweaks");
 
 		this.$.configScroller.scrollIntoView(0);
 
@@ -210,18 +209,9 @@ enyo.kind({
 	},
 
 	handleSetPref: function(inPref, inValue) {
-		enyo.log("Setting", inPref, "to", inValue);
 		var obj = {};
 		obj[inPref] = inValue;
-		enyo.log(obj);
 		this.$.srvSetPref.call(obj);
-	},
-	
-	setPrefsSuccess : function(inSender, inResponse) {
-    	enyo.log("setPreferences success, results=" + enyo.json.stringify(inResponse));
-	},
-	setPrefsFailure : function(inSender, inResponse) {
-		enyo.log("setPreferences failure, results=" + enyo.json.stringify(inResponse));
 	},
 
 	handleLunaNotify: function(inSender, inEvent) {
@@ -305,7 +295,7 @@ enyo.kind({
 							this.owner._config[this._category][group][i].prefserv,
 							this.$[inSender.name].getValue());
 					}
-		
+					
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
 					
@@ -322,7 +312,14 @@ enyo.kind({
 			this._pickerItem.value = inFiles;
 
 			var files = inFiles.toString();
-		
+			
+			if(this._pickerItem.prefserv != "")
+			{
+				this.handleSetPref(
+					this._pickerItem.prefserv,
+					files);
+			}
+			
 			if(files.length > 13)
 				files = files.slice(0, 10) + "...";
 		
@@ -344,7 +341,7 @@ enyo.kind({
 							this.owner._config[this._category][group][i].prefserv,
 							this.$[inSender.name].getValue());
 					}
-
+					
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
 
@@ -420,7 +417,7 @@ enyo.kind({
 							this.owner._config[this._category][group][i].prefserv,
 							this.$[inSender.name].getState());
 					}
-						
+					
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
 
