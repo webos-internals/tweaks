@@ -102,15 +102,15 @@ enyo.kind({
 				}
 			}
 			
-			if(category != "luna")
-			{
-				this._tweakGroups.push(inTweaks[category]);
-				this._tweakCategories.push({category: category, count: count});
-			}
-			else
+			if(category == "luna" || category == "screen & lock")
 			{
 				this._prefGroups.push(inTweaks[category]);
 				this._prefCategories.push({category: category, count: count});
+			}
+			else
+			{
+				this._tweakGroups.push(inTweaks[category]);
+				this._tweakCategories.push({category: category, count: count});
 			}
 		}
 
