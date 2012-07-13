@@ -418,7 +418,7 @@ enyo.kind({
 					{
 						this.handleSetPref(
 							this.owner._config[this._category][group][i].prefserv,
-							this.$[inSender.name].getValue());
+							this.$[inSender.name].getState());
 					}
 						
 					if(this.owner._config[this._category][group][i].restart == "luna")
