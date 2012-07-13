@@ -40,11 +40,6 @@ enyo.kind({
 		]},
 	],
 	
-	radioButtonSelected: function(inSender) {
-		if(inSender.getValue() == 0) this.$.catPane.selectViewByIndex(0);
-		else if(inSender.getValue() == 1) this.$.catPane.selectViewByIndex(1);
-	},
-	
 	adjustInterface: function(inSize) {
 		this.$.scroller.applyStyle("height", (inSize.h - 87) + "px");
 	},
