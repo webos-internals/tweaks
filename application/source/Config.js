@@ -74,9 +74,10 @@ enyo.kind({
 		{name: "srvRestartLuna", kind: "PalmService", service: "palm://org.webosinternals.ipkgservice", method: "restartLuna"},
 
 		{name: "srvSetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "setPreferences"},
-
+/*
 		{name: "srvGetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "getPreferences", 
 			onSuccess: "getPrefsSuccess", onFailure: "getPrefsFailure"}
+*/
 	],
 	
 	adjustInterface: function(inSize) {
@@ -124,14 +125,14 @@ enyo.kind({
 				for(var i = 0; i < inGroups[group].length; i++) {
 					if(inGroups[group][i].deleted != undefined)
 						continue;
-						
+					/*
 					if(inGroups[group][i].prefserv != "")
 					{
 						var obj = {keys:[]}
 						obj.keys[0] = inGroups[group][i].prefserv;
 						this.$.srvGetPref.call(obj);
 					}
-				
+					*/
 					if(inGroups[group][i].type == "IntegerPicker") {
 						help.push({label: inGroups[group][i].label, help: inGroups[group][i].help});
 
@@ -191,12 +192,12 @@ enyo.kind({
 
 		this.$.groups.render();
 	},
-	
+/*
 	getPrefsSuccess : function(inSender, inResponse) {
 	   enyo.log("getPreferences success, results=" + enyo.json.stringify(inResponse));
 	   //Set the item's value to the one in inResponse here, not sure how...
 	},
-
+*/
 	saveTweaksConfig: function() {
 		this.$.srvSaveTweaks.call({objects: [this.owner._config]});
 	},
