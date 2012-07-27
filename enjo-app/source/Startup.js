@@ -19,9 +19,6 @@ enyo.kind({
 					"<li>When you change the settings for a running application, you need to restart the application to see the change</li>" +
 					"</ul><br>"},
 
-				{kind: "Divider", caption: "3.0.0b"},
-				{content: "<ul><li>Removed Mojo completely, added testing base for Preferences support</li></ul>"},
-
 				{kind: "Divider", caption: "1.8.5"},
 				{content: "<ul><li>Cleaned up the code and fixed a small bug</li></ul>"},
 

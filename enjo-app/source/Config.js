@@ -71,13 +71,7 @@ enyo.kind({
 		{name: "srvSaveTweaks", kind: "DbService", dbKind: "org.webosinternals.tweaks:1", method: "merge", 
 			onSuccess: "handleTweaksSaved", onFailure: "handleServiceError"},
 
-		{name: "srvRestartLuna", kind: "PalmService", service: "palm://org.webosinternals.ipkgservice", method: "restartLuna"},
-
-		{name: "srvSetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "setPreferences"},
-/*
-		{name: "srvGetPref", kind: "PalmService", service: "palm://com.palm.systemservice/", method: "getPreferences", 
-			onSuccess: "getPrefsSuccess", onFailure: "getPrefsFailure"}
-*/
+		{name: "srvRestartLuna", kind: "PalmService", service: "palm://org.webosinternals.ipkgservice", method: "restartLuna"}
 	],
 	
 	adjustInterface: function(inSize) {
@@ -101,7 +95,7 @@ enyo.kind({
 
 			this.$.tag.show();
 		}
-
+				
 		this.$.title.setContent("Available " + inCategory + " Tweaks");
 
 		this.$.configScroller.scrollIntoView(0);
@@ -125,14 +119,7 @@ enyo.kind({
 				for(var i = 0; i < inGroups[group].length; i++) {
 					if(inGroups[group][i].deleted != undefined)
 						continue;
-					/*
-					if(inGroups[group][i].prefserv != "")
-					{
-						var obj = {keys:[]}
-						obj.keys[0] = inGroups[group][i].prefserv;
-						this.$.srvGetPref.call(obj);
-					}
-					*/
+				
 					if(inGroups[group][i].type == "IntegerPicker") {
 						help.push({label: inGroups[group][i].label, help: inGroups[group][i].help});
 
@@ -192,17 +179,12 @@ enyo.kind({
 
 		this.$.groups.render();
 	},
-/*
-	getPrefsSuccess : function(inSender, inResponse) {
-	   enyo.log("getPreferences success, results=" + enyo.json.stringify(inResponse));
-	   //Set the item's value to the one in inResponse here, not sure how...
-	},
-*/
+
 	saveTweaksConfig: function() {
 		this.$.srvSaveTweaks.call({objects: [this.owner._config]});
 	},
 
-	handleHelpToggle: function(inSender, inEvent){
+	handleHelpToggle: function(inSender, inEvent) {
 		if(this._ui == "compact") {
 			if(this._helpOn) {
 				this._helpOn = false;
@@ -222,12 +204,6 @@ enyo.kind({
 
 	handleServiceError: function() {
 		this.$.dlgServiceError.openAtCenter();
-	},
-
-	handleSetPref: function(inPref, inValue) {
-		var obj = {};
-		obj[inPref] = inValue;
-		this.$.srvSetPref.call(obj);
 	},
 
 	handleLunaNotify: function(inSender, inEvent) {
@@ -263,7 +239,7 @@ enyo.kind({
 			this.doSelect(inSender.name, this._help[inSender.name]);
 	},
 
-	openFilePicker: function(inSender) {
+	openFilePicker: function(inSender) {
 		for(var group in this.owner._config[this._category]) {
 			for(var i = 0; i < this.owner._config[this._category][group].length; i++) {
 				if(this.owner._config[this._category][group][i].key == inSender.name) {
@@ -305,13 +281,6 @@ enyo.kind({
 				if(this.owner._config[this._category][group][i].key == inSender.name) {
 					this.owner._config[this._category][group][i].value = this.$[inSender.name].getValue();
 		
-					if(this.owner._config[this._category][group][i].prefserv != "")
-					{
-						this.handleSetPref(
-							this.owner._config[this._category][group][i].prefserv,
-							this.$[inSender.name].getValue());
-					}
-					
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
 					
@@ -328,14 +297,7 @@ enyo.kind({
 			this._pickerItem.value = inFiles;
 
 			var files = inFiles.toString();
-			
-			if(this._pickerItem.prefserv != "")
-			{
-				this.handleSetPref(
-					this._pickerItem.prefserv,
-					files);
-			}
-			
+		
 			if(files.length > 13)
 				files = files.slice(0, 10) + "...";
 		
@@ -351,13 +313,6 @@ enyo.kind({
 				if(this.owner._config[this._category][group][i].key == inSender.name) {
 					this.owner._config[this._category][group][i].value = this.$[inSender.name].getValue();
 		
-					if(this.owner._config[this._category][group][i].prefserv != "")
-					{
-						this.handleSetPref(
-							this.owner._config[this._category][group][i].prefserv,
-							this.$[inSender.name].getValue());
-					}
-					
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
 
@@ -401,14 +356,7 @@ enyo.kind({
 					}
 					else {
 						this.owner._config[this._category][group][i].value = this.$[inSender.name].getValue();
-		
-						if(this.owner._config[this._category][group][i].prefserv != "")
-						{
-							this.handleSetPref(
-								this.owner._config[this._category][group][i].prefserv,
-								this.$[inSender.name].getValue());
-						}
-						
+	
 						if(this.owner._config[this._category][group][i].restart == "luna")
 							this.handleLunaNotify();
 
@@ -427,13 +375,6 @@ enyo.kind({
 				if(this.owner._config[this._category][group][i].key == inSender.name) {
 					this.owner._config[this._category][group][i].value = this.$[inSender.name].getState();
 		
-					if(this.owner._config[this._category][group][i].prefserv != "")
-					{
-						this.handleSetPref(
-							this.owner._config[this._category][group][i].prefserv,
-							this.$[inSender.name].getState());
-					}
-					
 					if(this.owner._config[this._category][group][i].restart == "luna")
 						this.handleLunaNotify();
 

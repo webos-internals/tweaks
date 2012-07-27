@@ -1,7 +1,7 @@
 {
 	"title": "Tweaks",
 	"id": "org.webosinternals.tweaks",
-	"version": "3.0.0",
+	"version": "1.8.5",
 	"release_date":	"14-Apr-2011",
 	"vendor": "WebOS Internals",
 	"vendor_email":	"support@webos-internals.org",
@@ -9,5 +9,6 @@
 	"type": "web",
 	"main": "index.html",
 	"icon": "icon.png",
+	"noWindow": true,
 	"uiRevision": "2"
 }

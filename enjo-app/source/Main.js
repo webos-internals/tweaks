@@ -13,10 +13,9 @@ enyo.kind({
 		{category: "clock", count: 0},			
 		{category: "contacts", count: 0},
 		{category: "email", count: 0},
-		{category: "luna", count: 0},
 		{category: "messaging", count: 0},
 		{category: "phone", count: 0},
-		{category: "system", count: 0},			
+		{category: "system", count: 0}								
 	],
 	
 	events: {
@@ -27,17 +26,17 @@ enyo.kind({
 		{kind: "wi.Header", random: [{weight: 100, tagline: "Tweak the hell out of webOS!"}]}, 
 		
 		{name: "main", layoutKind: "VFlexLayout", flex: 1, components: [
-			{name: "scroller", kind: "Scroller", height: "100%", components: [
-				{name: "tweakCategories", kind: "VirtualRepeater", onSetupRow: "setupcategory", components: [
+			{name: "scroller", kind: "Scroller", height: "613px", components: [
+				{name: "categories", kind: "VirtualRepeater", onSetupRow: "setupCategory", components: [
 					{kind: "Item", layoutKind: "HFlexLayout", flex: 1, align: "center", tapHighlight: true, 
-						onclick: "handlecategory", components: [
+						onclick: "handleCategory", components: [
 							{name: "icon", kind: "Image", src: "images/icon-generic.png", style: "margin: -10px 18px -8px 5px;"}, 
 							{name: "category", flex: 1, style: "text-transform: capitalize; margin-top: -1px;"},
 							{name: "count", className: "enyo-label", style: "padding-right: 20px;"}
 					]}
-				]},
+				]}
 			]}
-		]},
+		]}
 	],
 	
 	adjustInterface: function(inSize) {
@@ -74,17 +73,18 @@ enyo.kind({
 					}
 				}
 			}
-			
+
 			this._groups.push(inTweaks[category]);
+			
 			this._categories.push({category: category, count: count});
 		}
 
-		this.$.tweakCategories.render();
+		this.$.categories.render();
 		
 		return totalCount;
 	},
 	
-	setupcategory: function(inSender, inIndex) {
+	setupCategory: function(inSender, inIndex) {
 		if((this._categories.length > 0) && (this._categories.length > inIndex) && (inIndex >= 0)) {
 			this.$.category.setContent(this._categories[inIndex].category);
 			this.$.count.setContent(this._categories[inIndex].count);
@@ -95,7 +95,6 @@ enyo.kind({
 				(this._categories[inIndex].category == "clock") ||
 				(this._categories[inIndex].category == "contacts") ||
 				(this._categories[inIndex].category == "email") ||
-				(this._categories[inIndex].category == "luna") ||
 				(this._categories[inIndex].category == "messaging") ||
 				(this._categories[inIndex].category == "phone"))
 			{
@@ -112,12 +111,12 @@ enyo.kind({
 		}
 	},
 
-	handlecategory: function(inSender, inEvent) {
+	handleCategory: function(inSender, inEvent) {
 		if(this._categories[inEvent.rowIndex].count > 0) {
-	      var list = this.$.tweakCategories.getOffset();
+	      var list = this.$.categories.getOffset();
 		
 			this.doSelect(list.top + (inEvent.rowIndex * 45), this._categories[inEvent.rowIndex].category, this._groups[inEvent.rowIndex]);
 		}
-	},
+	}
 });
 

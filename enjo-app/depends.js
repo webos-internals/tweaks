@@ -6,6 +6,5 @@ enyo.depends(
 	"source/Config.js",
 	"source/Help.js",
 	"source/Wosi.js",
-	"source/Startup.js",
-	"source/PreferencesService.js"
+	"source/Startup.js"
 );
