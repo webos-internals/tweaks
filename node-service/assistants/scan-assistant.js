@@ -22,9 +22,10 @@ ScanCommandAssistant.prototype.run = function(future) {
 			clock: {},
 			contacts: {},
 			email: {},
-			messaging: {},
+			luna: {},
+			messaging: {},
 			phone: {},
-			system: {}			
+			system: {}
 		};
 
 		var fs = IMPORTS.require('fs');
@@ -41,7 +42,7 @@ ScanCommandAssistant.prototype.run = function(future) {
 
 			return;
 		}	
-		
+
 		for(var fileIdx = 0; fileIdx < files.length; fileIdx++) {
 			if(files[fileIdx].slice(files[fileIdx].length - 5) == ".json") {
 				var fileId = files[fileIdx].slice(0, files[fileIdx].length - 5);
@@ -54,11 +55,11 @@ ScanCommandAssistant.prototype.run = function(future) {
 					for(var i = 0; i < jsonData.length; i++) {
 						var category = jsonData[i].category.toLowerCase();
 						var owner = jsonData[i].owner || fileId;
-			
+
 						if((jsonData[i].prefs) && (jsonData[i].prefs.length)) {
 							if(!newConfig[category])
 								newConfig[category] = {}; 
-						
+
 							for(var j = 0; j < jsonData[i].prefs.length; j++) {
 								if(jsonData[i].prefs[j].group) {
 									var group = jsonData[i].prefs[j].group.toLowerCase();
@@ -68,11 +69,12 @@ ScanCommandAssistant.prototype.run = function(future) {
 
 									if(jsonData[i].prefs[j].key) {
 										var key = jsonData[i].prefs[j].key;
-			
+
 										var help = "";
 										var label = "";
 										var restart = "none";
-			
+										var prefserv = "";
+
 										if(jsonData[i].prefs[j].help)
 											help = jsonData[i].prefs[j].help;
 
@@ -81,6 +83,9 @@ ScanCommandAssistant.prototype.run = function(future) {
 
 										if(jsonData[i].prefs[j].restart)
 											restart = jsonData[i].prefs[j].restart;
+
+										if(jsonData[i].prefs[j].prefserv)
+											prefserv = jsonData[i].prefs[j].prefserv;
 
 										if(jsonData[i].prefs[j].value != undefined) {
 											var value = jsonData[i].prefs[j].value;
@@ -93,25 +98,25 @@ ScanCommandAssistant.prototype.run = function(future) {
 														(config[category][group][k].key == key))
 													{
 														value = config[category][group][k].value;
-							
+
 														break;
 													}
 												}
 											}
-											
+
 											if(jsonData[i].prefs[j].type == "IntegerPicker") {
 												var minValue = 0;
 												var maxValue = 100;
-				
+
 												if(jsonData[i].prefs[j].min)
 													minValue = jsonData[i].prefs[j].min;
-				
+
 												if(jsonData[i].prefs[j].max)
 													maxValue = jsonData[i].prefs[j].max;
 
 												newConfig[category][group].push({
 													owner: owner, type: "IntegerPicker", 
-													key: key, restart: restart,
+													key: key, restart: restart, prefserv: prefserv,
 													help: help, label: label, value: value,
 													min: minValue, max: maxValue});
 											}
@@ -121,48 +126,48 @@ ScanCommandAssistant.prototype.run = function(future) {
 
 													newConfig[category][group].push({
 														owner: owner, type: "ListSelector", 
-														key: key, restart: restart,
+														key: key, restart: restart, prefserv: prefserv,
 														help: help, label: label, value: value,
 														choices: choices});
 												}
 											}
 											else if(jsonData[i].prefs[j].type == "TextField") {
 												var input = "text";
-												
+
 												if(jsonData[i].prefs[j].input)
 													input = jsonData[i].prefs[j].input;
-											
+
 												newConfig[category][group].push({
 													owner: owner, type: "TextField", 
-													key: key, restart: restart,
+													key: key, restart: restart, prefserv: prefserv,
 													help: help, label: label, value: value,
 													input: input});
 											}
 											else if(jsonData[i].prefs[j].type == "ToggleButton") {
 												newConfig[category][group].push({
 													owner: owner, type: "ToggleButton", 
-													key: key, restart: restart,
+													key: key, restart: restart, prefserv: prefserv,
 													help: help, label: label, value: value});
 											}
 											else if(jsonData[i].prefs[j].type == "FilePicker") {
 												var path = "/media/internal/downloads";
-												
+
 												if(jsonData[i].prefs[j].path)
 													path = jsonData[i].prefs[j].path;
 
 												var filter = "files";
-												
+
 												if(jsonData[i].prefs[j].filter)
 													filter = jsonData[i].prefs[j].filter;
 
 												var select = "single";
-												
+
 												if(jsonData[i].prefs[j].select == true)
 													select = jsonData[i].prefs[j].select;
-											
+
 												newConfig[category][group].push({
 													owner: owner, type: "FilePicker", 
-													key: key, restart: restart,
+													key: key, restart: restart, prefserv: prefserv,
 													help: help, label: label, value: value,
 													path: path, filter: filter, select: select});
 											}
@@ -186,4 +191,3 @@ ScanCommandAssistant.prototype.run = function(future) {
 
 ScanCommandAssistant.prototype.cleanup = function() {  
 }
-
