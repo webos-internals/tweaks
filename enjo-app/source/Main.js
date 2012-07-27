@@ -95,6 +95,7 @@ enyo.kind({
 				(this._categories[inIndex].category == "clock") ||
 				(this._categories[inIndex].category == "contacts") ||
 				(this._categories[inIndex].category == "email") ||
+				(this._categories[inIndex].category == "luna") ||
 				(this._categories[inIndex].category == "messaging") ||
 				(this._categories[inIndex].category == "phone"))
 			{
