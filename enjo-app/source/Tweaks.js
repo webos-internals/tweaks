@@ -37,12 +37,12 @@ enyo.kind({
 					]}, 
 					{name: "clsMain", kind: "Main", className: "enyo-bg", onSelect: "handleCategorySelect"}, 
 					{name: "clsStartup", kind: "Startup", className: "enyo-bg", onDone: "startupDone"}
-				]},
+				]}
 			]}, 
 			{name: "middle", fixedWidth: true, peekWidth: 64, width: "704px", dragAnywhere: false, className: "blank-slider", components: [
 				{name: "middlePane", kind: "Pane", flex: 1, components: [
-					{layoutKind: "VFlexLayout", flex: 1, align: "center", pack: "center", style: "background: #666666;", components:[
-						{name: "middleImage", kind: "Image", src: "images/empty-icon.png"},
+					{layoutKind: "VFlexLayout", flex: 1, align: "center", pack: "center", style: "background: #666666;", components: [
+						{name: "middleImage", kind: "Image", src: "images/empty-icon.png"}, 
 						{name: "middleSpinner", kind: "SpinnerLarge"},
 						{name: "middleProgress", content: "", style: "margin-top: -20px; font-size: 0.7em; color: #999999;"}
 					]},
@@ -58,7 +58,7 @@ enyo.kind({
 			onSuccess: "handleLoadFinished", onFailure: "handleServiceError"}, 
 
 		{name: "srvScanTweaks", kind: "PalmService", service: "palm://org.webosinternals.tweaks.prefs/", method: "scan", 
-			onSuccess: "handleScanFinished", onFailure: "handleServiceError"},
+			onSuccess: "handleScanFinished", onFailure: "handleServiceError"}
 	],
 	
 	rendered: function() {
@@ -111,8 +111,8 @@ enyo.kind({
 	},
 
 	startupDone: function() {
-		this.$.leftProgress.setContent("Scanning installed tweaks...");
-		this.$.middleProgress.setContent("Scanning installed tweaks...");
+		this.$.leftProgress.setContent("Scanning installed tweaks...");		
+		this.$.middleProgress.setContent("Scanning installed tweaks...");		
 
 		this.showSpinner();
 

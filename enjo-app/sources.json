@@ -1,0 +1,27 @@
+[
+	{ "source": "app/assistants/app-assistant.js" },
+
+	{
+		"source": "app/assistants/main-assistant.js", 
+		"scenes": "main"
+	},
+
+	{
+		"source": "app/assistants/config-assistant.js", 
+		"scenes": "config"
+	},
+
+	{
+		"source": "app/assistants/prefs-assistant.js",
+		"scenes": "prefs"
+	},
+
+	{
+		"source": "app/assistants/startup-assistant.js",
+		"scenes": "startup"
+	},
+	{
+		"source": "app/assistants/support-assistant.js",
+		"scenes": "support"
+	}
+]
