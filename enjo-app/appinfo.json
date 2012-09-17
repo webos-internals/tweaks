@@ -1,8 +1,8 @@
 {
 	"title": "Tweaks",
 	"id": "org.webosinternals.tweaks",
-	"version": "3.0.1",
-	"release_date":	"14-Apr-2011",
+	"version": "3.0.2",
+	"release_date":	"17-Sep-2012",
 	"vendor": "WebOS Internals",
 	"vendor_email":	"support@webos-internals.org",
 	"vendor_url": "http://www.webos-internals.org/wiki/Application:Tweaks",

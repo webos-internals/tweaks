@@ -168,7 +168,7 @@ enyo.kind({
 
 						items.push({kind: "Item", layoutKind: "HFlexLayout", align: "center", pack: "center", components: [
 							{content: inGroups[group][i].label, flex: 1, className: "enyo-label"},
-							{name: inGroups[group][i].key, kind: "ToggleButton", onLabel: "Yes", offLabel: "No", state: inGroups[group][i].value, onChange: "handleToggle"}]});
+							{name: inGroups[group][i].key, kind: "TweaksToggleButton", onLabel: "Yes", offLabel: "No", state: inGroups[group][i].value, onChange: "handleToggle"}]});
 					}
 					else if(inGroups[group][i].type == "FilePicker") {
 						help.push({label: inGroups[group][i].label, help: inGroups[group][i].help});
@@ -422,6 +422,8 @@ enyo.kind({
 	},
 	
 	handleToggle: function(inSender) {
+		enyo.log("Handling Toggle");
+		
 		for(var group in this.owner._config[this._category]) {
 			for(var i = 0; i < this.owner._config[this._category][group].length; i++) {
 				if(this.owner._config[this._category][group][i].key == inSender.name) {
@@ -442,6 +444,17 @@ enyo.kind({
 					break;
 				}
 			}
+		}
+	}
+});
+
+enyo.kind({
+	name: "TweaksToggleButton",
+	kind: "ToggleButton",
+	updateState: function(inState) {
+		if(!this.disabled && this.state != inState) {
+			this.setState(inState);
+			this.doChange(this.state);
 		}
 	}
 });
